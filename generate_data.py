@@ -5,8 +5,10 @@ from datetime import date
 
 import os
 
+dirname = os.path.dirname(__file__)
+
 config = configparser.ConfigParser()
-config.read(os.path.join(os.getcwd(), 'config.ini'))
+config.read(os.path.join(dirname, 'config.ini'))
 
 SHOPS_NUM = int(config['Shops']['SHOPS_NUM'])
 PATH = os.path.join(os.path.join(os.getcwd(), "data"), str(date.today()))
