@@ -30,10 +30,10 @@ with PGDatabase(
                     next(reader)
                     for row in reader:
                         query = f"""insert into sales values(
-                            {folder},
-                            {shop_num},
-                            {cash_num},
-                            {row['doc_id']},
+                            '{folder}'::date, 
+                            {shop_num}, 
+                            {cash_num}, 
+                            {row['doc_id']}, 
                             '{row['item']}',
                             '{row['category']}',
                             {row['amount']},
