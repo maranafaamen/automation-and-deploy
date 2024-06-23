@@ -23,10 +23,20 @@ with PGDatabase(
     for folder in os.listdir(PATH):
         for file in os.listdir(os.path.join(PATH, folder)):
             if re.match(r'^\d+_\d+\.csv$', file):
+                shop_num = re.match(r'^(\d+)_(\d+)\.csv$', file).group(1)
+                cash_num = re.match(r'^(\d+)_(\d+)\.csv$', file).group(2)
                 with open(os.path.join(PATH, folder, file), 'r') as csvfile:
-                    reader = csv.reader(csvfile, delimiter=',', )
+                    reader = csv.DictReader(csvfile, delimiter=',', )
                     next(reader)
                     for row in reader:
-                        print(row)
-                        query = f"insert into sales values ('{row['dt']}', '{row['company']}', '{row['transaction_type']}', {row['amount']})"
+                        query = f"""insert into sales values(
+                            {folder},
+                            {shop_num},
+                            {cash_num},
+                            {row['doc_id']},
+                            '{row['item']}',
+                            '{row['category']}',
+                            {row['amount']},
+                            {row['price']},
+                            {row['discount']})"""
                         database.post(query)

@@ -2,7 +2,6 @@ import pandas as pd
 import random
 import configparser
 from datetime import date
-
 import os
 
 dirname = os.path.dirname(__file__)
