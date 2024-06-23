@@ -52,7 +52,7 @@ for shop in range(SHOPS_NUM):
 
         sales_df = pd.DataFrame(sales)
 
-        sales_df.drop_duplicates(subset=['doc_id', 'item'])
+        sales_df = sales_df.drop_duplicates(subset=['doc_id', 'item'])
 
         filename = f"{shop + 1}_{cash_register + 1}.csv"
 
