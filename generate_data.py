@@ -40,7 +40,7 @@ for shop in range(SHOPS_NUM):
                 rand_category = random.choice(list(GOODS.keys()))
                 rand_item = random.choice(GOODS[rand_category])
                 position = {
-                    "doc_id": f"{shop + 1}_{doc + 1}",
+                    "doc_id": f"{date.today().strftime('%d%m%y')}{shop + 1}{cash_register + 1}{doc + 1}",
                     "item": rand_item["name"],
                     "category": rand_category,
                     "amount": random.randint(1, 5),
