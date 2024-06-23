@@ -11,7 +11,7 @@ config = configparser.ConfigParser()
 config.read(os.path.join(dirname, 'config.ini'))
 
 SHOPS_NUM = int(config['Shops']['SHOPS_NUM'])
-PATH = os.path.join(os.path.join(os.getcwd(), "data"), str(date.today()))
+PATH = os.path.join(os.path.join(dirname, "data"), str(date.today()))
 GOODS = eval(config['Shops']['GOODS'])
 
 if not os.path.exists(PATH):
